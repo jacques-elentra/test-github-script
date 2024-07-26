@@ -1,5 +1,7 @@
 name: Test build.js inputs from GitHub
 
+on: all
+
 jobs:
   build-matrix:
     name: Generate Matrix
