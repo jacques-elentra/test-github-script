@@ -1,6 +1,6 @@
 name: Test build.js inputs from GitHub
 
-on: all
+on: push
 
 jobs:
   build-matrix:
