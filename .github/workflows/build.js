@@ -15,10 +15,19 @@ let refs = build['elentra-1x-me'].map(ref => ({ me_ref: ref, me_branch: ref }));
  */
 module.exports = async ({ github, context, core }) => {
 
+    // console.log({ repo: context.repo });
+    // console.log(context.repo);
+    // console.log(JSON.stringify(context, null, 2));
+    // console.log(context.constructor.name);
+
     /**
      * The GitHub repository object
      */
-    const { repo } = context;
+    // const { repo } = context;
+    // console.log({ github, context, core, repo });
+
+    // const repo = { owner: 'jacques-elentra', repo: 'test-github-script' }
+    const repo = { owner: 'ElentraProject', repo: 'elentra-1x-me' }
 
     /**
      * Parse the Jira ticket info from the branch name
@@ -125,6 +134,9 @@ module.exports = async ({ github, context, core }) => {
      * The companion pull request required to test the changes against
      */
     let pull_request;
+
+    console.log({ FOO: process.env.GITHUB_HEAD_REF });
+    console.log({ env: process.env });
 
     try {
         ;({ parent, issue } = parseJiraIssue(process.env.GITHUB_HEAD_REF));
