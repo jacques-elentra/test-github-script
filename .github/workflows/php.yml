@@ -1,0 +1,22 @@
+name: Test build.js inputs from GitHub
+
+jobs:
+  build-matrix:
+    name: Generate Matrix
+    needs: [compat]
+    runs-on: [self-hosted, linux, x64]
+    outputs:
+      matrix: ${{ steps.generate-matrix.outputs.result }}
+
+    steps:
+    - name: Checkout source
+      uses: actions/checkout@v2
+
+    - name: Generate build matrix
+      id: generate-matrix
+      uses: actions/github-script@v6
+      with:
+        github-token: ${{ secrets.REPOSITORY_ACCESS_TOKEN }}
+        script: |
+            const matrix = require('${{ github.workspace }}/.github/workflows/build.js');
+            return await matrix({ github, context, core });

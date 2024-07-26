@@ -1,0 +1,11 @@
+{
+    "elentra-1x-me": [
+        "release/1.25"
+    ],
+    "php": [
+        {
+            "version": "8.0",
+            "experimental": false
+        }
+    ]
+}
